@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = TestKafka::VERSION
   spec.authors       = ["Brian Schroeder"]
   spec.email         = ["bts@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{Minimal Kafka runner suitable for integration testing}
+  spec.summary       = spec.description
+  spec.homepage      = "http://github.com/bts/test_kafka"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -20,4 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+
+  spec.add_dependency "daemon_controller", "~> 1.0.0"
 end
