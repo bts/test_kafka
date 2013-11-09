@@ -10,13 +10,12 @@ module TestKafka
       @id = id
       @tmp_dir = tmp_dir
       @properties = properties
-      @pid = nil
       @java_class = java_class
       @port = port
       @kafka_path = kafka_path
     end
 
-    attr_reader :pid, :tmp_dir, :java_class, :kafka_path
+    attr_reader :tmp_dir, :java_class, :kafka_path
 
     def start
       write_properties
