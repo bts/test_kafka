@@ -9,9 +9,9 @@ module TestKafka
                            "org.apache.zookeeper.server.quorum.QuorumPeerMain",
                            port,
                            kafka_path,
-                           :dataDir => "#{tmp_dir}/zookeeper",
-                           :clientPort => port,
-                           :maxClientCnxns => 0)
+                           "dataDir" => "#{tmp_dir}/zookeeper",
+                           "clientPort" => port,
+                           "maxClientCnxns" => 0)
     end
 
     attr_reader :port
