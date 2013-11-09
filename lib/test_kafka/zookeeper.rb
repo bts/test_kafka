@@ -3,6 +3,7 @@ require 'test_kafka/java_runner'
 module TestKafka
   class Zookeeper
     def initialize(kafka_path, tmp_dir, port)
+      @port = port
       @jr = JavaRunner.new("zookeeper",
                            tmp_dir,
                            "org.apache.zookeeper.server.quorum.QuorumPeerMain",
@@ -12,6 +13,8 @@ module TestKafka
                            :clientPort => port,
                            :maxClientCnxns => 0)
     end
+
+    attr_reader :port
 
     def pid
       @jr.pid

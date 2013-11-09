@@ -43,7 +43,7 @@ module TestKafka
                            ))
     end
 
-    attr_reader :broker_id
+    attr_reader :broker_id, :port
 
     def pid
       @jr.pid
