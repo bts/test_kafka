@@ -16,16 +16,16 @@ module TestKafka
 
     attr_reader :port
 
-    def pid
-      @jr.pid
-    end
-
     def start
       @jr.start
     end
 
     def stop
       @jr.stop
+    end
+
+    def pid
+      @jr.pid
     end
 
     def with_interruption(&block)
