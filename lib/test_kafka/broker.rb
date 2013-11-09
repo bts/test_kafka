@@ -1,7 +1,7 @@
 require 'test_kafka/java_runner'
 
 module TestKafka
-  class BrokerRunner
+  class Broker
     DEFAULT_PROPERTIES = {
       "broker.id" => 0,
       "port" => 9092,

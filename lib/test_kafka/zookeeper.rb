@@ -1,7 +1,7 @@
 require 'test_kafka/java_runner'
 
 module TestKafka
-  class ZookeeperRunner
+  class Zookeeper
     def initialize(kafka_path, tmp_dir, port)
       @jr = JavaRunner.new("zookeeper",
                            tmp_dir,
