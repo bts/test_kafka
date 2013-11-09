@@ -4,7 +4,9 @@ require 'daemon_controller'
 
 module TestKafka
   class JavaRunner
-    def initialize(id, tmp_dir, java_class, port, kafka_path, properties = {})
+    MAX_HEAP_SIZE = 512
+
+    def initialize(id, tmp_dir, java_class, port, kafka_path, properties={})
       @id = id
       @tmp_dir = tmp_dir
       @properties = properties
@@ -46,7 +48,7 @@ module TestKafka
     end
 
     def java_command
-      "exec java -Xmx512M -server -cp #{classpath} #{java_class} #{config_path}"
+      "exec java -Xmx#{MAX_HEAP_SIZE}M -server -cp #{classpath} #{java_class} #{config_path}"
     end
 
     def daemon_controller
