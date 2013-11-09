@@ -25,23 +25,25 @@ module TestKafka
       "kafka.csv.metrics.reporter.enabled" => "false",
     }.freeze
 
-    def initialize(kafka_path, tmp_dir, id, port, zk_port, partition_count = 1)
-      @id = id
+    def initialize(kafka_path, tmp_dir, port, zk_port, broker_id=0, partition_count=1)
+      @broker_id = broker_id
       @port = port
-      @jr = JavaRunner.new("broker_#{id}",
+      @jr = JavaRunner.new("broker_#{broker_id}",
                            tmp_dir,
                            "kafka.Kafka",
                            port,
                            kafka_path,
                            DEFAULT_PROPERTIES.merge(
-                             "broker.id" => id,
+                             "broker.id" => broker_id,
                              "port" => port,
-                             "log.dir" => "#{tmp_dir}/kafka-logs_#{id}",
+                             "log.dir" => "#{tmp_dir}/kafka-logs_#{broker_id}",
                              "kafka.csv.metrics.dir" => "#{tmp_dir}/kafka_metrics",
                              "num.partitions" => partition_count,
                              "zookeeper.connect" => "localhost:#{zk_port}"
                            ))
     end
+
+    attr_reader :broker_id
 
     def pid
       @jr.pid
