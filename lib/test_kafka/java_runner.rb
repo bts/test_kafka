@@ -1,5 +1,5 @@
 require 'fileutils'
-require 'socket' # daemon_controller needs it but currently doesn't require it
+require 'socket' # daemon_controller needs this but currently doesn't require it
 require 'daemon_controller'
 
 module TestKafka
