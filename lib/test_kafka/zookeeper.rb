@@ -24,5 +24,9 @@ module TestKafka
     def stop
       @jr.stop
     end
+
+    def with_interruption
+      @jr.with_interruption { yield }
+    end
   end
 end
