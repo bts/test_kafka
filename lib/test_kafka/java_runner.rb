@@ -25,7 +25,7 @@ module TestKafka
       daemon_controller.stop
     end
 
-    def without_process
+    def with_interruption
       stop
       begin
         yield

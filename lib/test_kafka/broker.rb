@@ -57,8 +57,8 @@ module TestKafka
       @jr.stop
     end
 
-    def without_process
-      @jr.without_process { yield }
+    def with_interruption
+      @jr.with_interruption { yield }
     end
   end
 end
