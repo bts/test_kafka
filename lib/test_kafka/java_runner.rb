@@ -9,10 +9,10 @@ module TestKafka
     def initialize(id, tmp_dir, java_class, port, kafka_path, properties={})
       @id = id
       @tmp_dir = tmp_dir
-      @properties = properties
       @java_class = java_class
       @port = port
       @kafka_path = kafka_path
+      @properties = properties
     end
 
     attr_reader :tmp_dir, :java_class, :kafka_path
