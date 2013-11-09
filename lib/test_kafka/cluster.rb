@@ -2,7 +2,7 @@ require 'test_kafka/zookeeper_runner'
 require 'test_kafka/broker_runner'
 
 module TestKafka
-  class ClusterRunner
+  class Cluster
     def initialize(kafka_path, tmp_dir, kafka_port, zk_port)
       @zookeeper = ZookeeperRunner.new(kafka_path, tmp_dir, zk_port)
       @broker = BrokerRunner.new(kafka_path, tmp_dir, 0, kafka_port, zk_port)
