@@ -23,7 +23,7 @@ module TestKafka
       "kafka.metrics.reporters" => "kafka.metrics.KafkaCSVMetricsReporter",
       "kafka.csv.metrics.dir" => "/tmp/kafka_metrics",
       "kafka.csv.metrics.reporter.enabled" => "false",
-    }
+    }.freeze
 
     def initialize(kafka_path, tmp_dir, id, port, zk_port, partition_count = 1)
       @id = id
