@@ -5,6 +5,7 @@ require 'daemon_controller'
 module TestKafka
   class JavaRunner
     MAX_HEAP_SIZE = 512
+    JAR_PATTERN = "core/target/scala-*/*.jar"
 
     def initialize(id, tmp_dir, java_class, port, kafka_path, properties={})
       @id = id
@@ -38,12 +39,7 @@ module TestKafka
     private
 
     def classpath
-      [
-        "core/target/scala-*/*.jar",
-        "perf/target/scala-*/kafka*.jar",
-        "libs/*.jar",
-        "kafka*.jar"
-      ].flat_map { |pattern| Dir.glob(kafka_path + "/" + pattern) }.join(":")
+      Dir.glob(kafka_path + "/" + JAR_PATTERN).join(":")
     end
 
     def java_command
