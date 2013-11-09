@@ -31,7 +31,6 @@ module TestKafka
         yield
       ensure
         start
-        sleep 5
       end
     end
 
