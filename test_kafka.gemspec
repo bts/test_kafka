@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.1.0"
   spec.add_development_dependency "rspec", "~> 2.12.0"
   spec.add_development_dependency "zk", "~> 1.9.2"
+  spec.add_development_dependency "poseidon", "~> 0.0.4"
 
   spec.add_dependency "daemon_controller", "~> 1.0.0"
 end
