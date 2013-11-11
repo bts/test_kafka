@@ -44,13 +44,6 @@ describe TestKafka::Zookeeper do
     end
   end
 
-  def running?(pid)
-    Process.kill(0, pid)
-    true
-  rescue Errno::ESRCH
-    false
-  end
-
   describe '#stop' do
     it 'stops a running ZK server' do
       server.start

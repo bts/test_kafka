@@ -13,3 +13,10 @@ require 'test_kafka/java_runner'
 if Dir.glob(KAFKA_PATH + "/" + TestKafka::JavaRunner::JAR_PATTERN).empty?
   fail "Could not find Kafka. Set the environment variable KAFKA_PATH or install Kafka to /usr/local/kafka."
 end
+
+def running?(pid)
+  Process.kill(0, pid)
+  true
+rescue Errno::ESRCH
+  false
+end
