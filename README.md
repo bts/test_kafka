@@ -9,7 +9,7 @@ Adapted from the excellent [poseidon](https://github.com/bpot/poseidon)'s integr
 Add TestKafka to your application's Gemfile:
 
 ```ruby
-gem 'test_kafka'
+gem 'test_kafka', '~> 0.1.0'
 ```
 
 and bundle:
