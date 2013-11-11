@@ -1,7 +1,6 @@
 require 'spec_helper'
 require 'test_kafka/broker'
 require 'test_kafka/zookeeper'
-require 'poseidon'
 
 describe TestKafka::Broker do
   let(:broker_port) { 9093 }
@@ -30,24 +29,10 @@ describe TestKafka::Broker do
   describe '#start' do
     it 'starts a Kafka broker' do
       broker.start
+      messages = ['value1', 'value2']
+      write_messages(broker_port, messages)
 
-      topic = 'topic1'
-      producer = Poseidon::Producer.new(["localhost:#{broker_port}"],
-                                        'test_producer')
-      producer.send_messages([
-        Poseidon::MessageToSend.new(topic, 'value1'),
-        Poseidon::MessageToSend.new(topic, 'value2')
-      ])
-      consumer = Poseidon::PartitionConsumer.new(
-        'test_consumer',
-        'localhost',
-        broker_port,
-        topic,
-        0,
-        :earliest_offset
-      )
-
-      consumer.fetch.map(&:value).should eql ['value1', 'value2']
+      read_messages(broker_port).should eql messages
 
       broker.stop
     end

@@ -23,5 +23,9 @@ module TestKafka
 
       self
     end
+
+    def with_interruption(&block)
+      @broker.with_interruption(&block)
+    end
   end
 end

@@ -20,3 +20,26 @@ def running?(pid)
 rescue Errno::ESRCH
   false
 end
+
+require 'poseidon'
+
+def write_messages(port, messages)
+  producer = Poseidon::Producer.new(["localhost:#{port}"],
+                                    'test_producer')
+  producer.send_messages(messages.map { |m|
+    Poseidon::MessageToSend.new('topic1', m)
+  })
+end
+
+def read_messages(port)
+  consumer = Poseidon::PartitionConsumer.new(
+    'test_consumer',
+    'localhost',
+    broker_port,
+    'topic1',
+    0,
+    :earliest_offset
+  )
+
+  consumer.fetch.map(&:value)
+end
