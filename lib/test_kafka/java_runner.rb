@@ -36,6 +36,12 @@ module TestKafka
       end
     end
 
+    def pid
+      data = File.read(pid_path)
+
+      data.to_i if data
+    end
+
     private
 
     def classpath
