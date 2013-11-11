@@ -1,29 +1,35 @@
 # TestKafka
 
-TODO: Write a gem description
+Minimal Kafka 0.8 runner suitable for integration testing.
+
+Adapted from the excellent [poseidon](https://github.com/bpot/poseidon)'s integration tests.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add TestKafka to your application's Gemfile:
 
-    gem 'test_kafka'
+```ruby
+gem 'test_kafka'
+```
 
-And then execute:
+and bundle:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install test_kafka
-
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'test_kafka'
 
-## Contributing
+cluster = TestKafka.start('/usr/local/kafka')
+# or specify custom a temp directory and kafka/zk ports:
+# cluster = TestKafka.start('/usr/local/kafka', '/tmp', 9092, 2181)
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+# ... interact with Kafka/ZK ...
+
+cluster.stop
+```
+
+## Requirements
+
+* Kafka 0.8 or higher
