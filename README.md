@@ -27,6 +27,12 @@ cluster = TestKafka.start('/usr/local/kafka')
 
 # ... interact with Kafka/ZK ...
 
+cluster.with_interruption do
+  # broker temporarily stopped in this block
+end
+
+# broker is back up
+
 cluster.stop
 ```
 
