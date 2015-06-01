@@ -10,8 +10,12 @@ KAFKA_PATH = ENV["KAFKA_PATH"] || DEFAULT_KAFKA_PATH
 
 require 'test_kafka/java_runner'
 
-if Dir.glob(KAFKA_PATH + "/" + TestKafka::JavaRunner::JAR_PATTERN).empty?
-  fail "Could not find Kafka. Set the environment variable KAFKA_PATH or install Kafka to /usr/local/kafka."
+jar_paths = TestKafka::JavaRunner::JAR_PATTERNS.flat_map { |pat|
+  Dir.glob(KAFKA_PATH + "/" + pat)
+}
+
+if jar_paths.empty?
+  fail "Could not find Kafka JARs. Set the environment variable KAFKA_PATH or install Kafka to /usr/local/kafka."
 end
 
 def running?(pid)
